@@ -10,6 +10,9 @@ class Search extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      searchInputValue: ""
+    };
 
     this.onChange = this.onChange.bind(this)
     this.onClear = this.onClear.bind(this)
@@ -18,6 +21,7 @@ class Search extends Component {
   }
   onChange(e)
   {
+    this.setState({ searchInputValue: e.target.value });
     if(e.target.value ===""){
       this.props.fetchData({firstName: "*"})
     }
@@ -27,9 +31,8 @@ class Search extends Component {
   }
 
   onClear(e)
-  {
-    let searchInput = ReactDOM.findDOMNode(this.refs.searchInput)
-    searchInput.value=""
+  {    
+    this.setState({ searchInputValue: "" });
     this.props.fetchData({firstName: "*"})
 
   }
@@ -52,10 +55,11 @@ class Search extends Component {
           <FormGroup controlId="formInlineEmail">
              <Col   smOffset={3} sm={4}>
               <FormControl
-               ref="searchInput"
+               //ref="searchInput"
                type="text"
                placeholder="First Name"
                onChange={this.onChange}
+               value={this.state.searchInputValue}
                />
              </Col>
              <Col  sm={2}>
@@ -88,6 +92,7 @@ class Search extends Component {
               type="text"
               placeholder="First Name"
               onChange={this.onChange}
+              value={this.state.searchInputValue}
               />
              </Col>
              <Col  sm={2}>
