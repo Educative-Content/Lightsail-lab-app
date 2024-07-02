@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const host = "localhost"
+const host = "127.0.0.1"
 const user = "Dummy"
 const pswd = "1234"
 const dbname = "books"
